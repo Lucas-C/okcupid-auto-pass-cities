@@ -25,3 +25,7 @@ You can generate **your own [bookmarklet](https://en.wikipedia.org/wiki/Bookmark
 for the cities you wish to excludeon this page: <https://lucas-c.github.io/okcupid-auto-pass-cities/>
 
 Of course it should be easy to extend this filtering to other criteria: age, details...
+
+<!-- Com':
+* https://www.reddit.com/r/OkCupid/comments/rueiag/i_made_a_bookmarklet_to_autopass_matches_with/
+-->
