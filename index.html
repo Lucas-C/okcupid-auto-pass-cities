@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Bookmarklet to auto-pass cities on OkCupid</title>
+        <meta name="description" content="Suivi de la lutte des soignants du Groupe Hospitalier Mutualiste à Grenoble">
+        <meta name="author" content="">
+        <meta name="copyright" content="">
+        <meta name="twitter:card" content="summary" >
+        <meta property="og:site_name" content="Hôpitaux À Défendre : GHM @ Grenoble" >
+
+        <meta property="og:title" content="Hôpitaux À Défendre : GHM @ Grenoble" >
+        <meta property="og:type" content="website" >
+        <meta property="og:url" content="." >
+        <meta name="twitter:url" content="." >
+        <meta itemprop="name" content="Hôpitaux À Défendre : GHM @ Grenoble" >
+        <meta itemprop="url" content=".">
+        <meta property="og:description" content="Suivi de la lutte des soignants du Groupe Hospitalier Mutualiste à Grenoble" >
+        <meta name="twitter:description" content="Suivi de la lutte des soignants du Groupe Hospitalier Mutualiste à Grenoble" >
+        <meta itemprop="description" content="Suivi de la lutte des soignants du Groupe Hospitalier Mutualiste à Grenoble" >
+        <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Dr_Hermitte_street_in_grenoble_%28outside%29.jpg/640px-Dr_Hermitte_street_in_grenoble_%28outside%29.jpg" >
+        <meta property="og:image:type" content="image/jpeg" >
+        <meta name="twitter:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Dr_Hermitte_street_in_grenoble_%28outside%29.jpg/640px-Dr_Hermitte_street_in_grenoble_%28outside%29.jpg" >
+        <meta itemprop="image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Dr_Hermitte_street_in_grenoble_%28outside%29.jpg/640px-Dr_Hermitte_street_in_grenoble_%28outside%29.jpg" >
+        <!-- Disallow Twitter from using your site’s info for personalization purposes: -->
+        <meta name="twitter:dnt" content="on">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+        <style>
+        body { padding: 2rem; }
+        h1 { margin-bottom: 20px; }
+        img.logo { width: 10rem; border-radius: 2rem; }
+        img.screenshot { display: block; margin: 2rem auto; width: 40rem; max-width: 100%; }
+        .container { max-width: 80rem; }
+        .jumbotron p { font-size: 16px; }
+        @media screen and (min-width: 768px) {
+          .jumbotron h1 { font-size: 32px; }
+        }
+        </style>
+    </head>
+    <body>
+      <div class="container">
+        <div class="jumbotron">
+          <h1>Bookmarklet to auto-pass cities on OkCupid</h1>
+          <p class="lead"><a href="https://www.okcupid.com"><img class="logo" alt="OkCupid logo" src="OkCupid-logo.jpg"></img></a> is great!</p>
+          <p>One things that annoys me a little though,
+          is that I often get matches for <b>people too far away</b> from where I live,
+          even with the <b>distance filter</b> set in my <em>Settings</em>:</p>
+          <img class="screenshot" src="OkCupid-distance-filter.jpg">
+          <p>Hence I have made a <a href="https://en.wikipedia.org/wiki/Bookmarklet">bookmarklet</a> that <b>auto-pass matches for a list of given cities</b>.</p>
+          <p>There are the steps to configure and use your own bookmarklet:</p>
+          <ol>
+            <li>Enter a list of city names below, separated by commas.</li>
+            <li>Press the <em>Create bookmarklet</em> green button.</li>
+            <li>A blue button should appear. Drag-and-drop it on your bookmark toolbar.</li>
+            <li>On the <a href="https://www.okcupid.com/discover">/discover</a> page at OkCupid.com, click on your new <em>OkCupid AutoPassCities</em> bookmarklet.</li>
+          </ol>
+          <form>
+            <div class="form-group">
+              <label for="cities">Cities</label>
+              <input class="form-control" id="cities" placeholder="Paris,Bordeaux">
+            </div>
+            <button type="submit" class="btn btn-lg btn-success">Create bookmarklet</button>
+          </form>
+          <br>
+          <p>
+            Bookmarklet generated:
+            <a role="button" class="btn btn-lg btn-info" id="bookmarklet" style="display: none">OkCupid AutoPassCities</a>
+          </p>
+        </div>
+        <footer>Source code is on <a href="https://github.com/Lucas-C/jdr/">GitHub</a></footer
+      </div>
+      <script>
+        const form = document.forms[0];
+        const cities = document.getElementsByTagName('input')[0];
+        const bookmarklet = document.getElementById('bookmarklet');
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            bookmarklet.style.display = '';
+            bookmarklet.href = `javascript:function autoPassCities() {
+    const loc = document.getElementsByClassName('card-content-header__location')[0].textContent;
+    if ('${cities.value}'.split(',').some(city => loc.endsWith(city.trim()))) {
+        console.log('AutoPass:', loc);
+        document.getElementsByClassName('pass')[0].click();
+    }
+    setTimeout(autoPassCities, 500);
+} autoPassCities();`;
+            console.log(cities.value);
+        });
+      </script>
+    </body>
+</html>
