@@ -93,9 +93,9 @@
             bookmarklet.style.display = '';
             bookmarklet.href = `javascript:function autoPass() {
     const loc = document.getElementsByClassName('card-content-header__location')[0].textContent;
-    const textSections = document.getElementsByClassName('dt-essay-section');
-    const summary = textSections.length > 0 && textSections[0].textContent;
-    const details = textSections.length > 1 && textSections[1].textContent;
+    const sectionContents = document.getElementsByClassName('dt-section-content');
+    const summary = sectionContents.length > 0 && sectionContents[0].textContent;
+    const details = sectionContents.length > 1 && sectionContents[1].textContent;
     const passButton = document.getElementsByClassName('pass')[0];
     if ('${citiesToExclude.value}'.split(',').some(city => city.trim() && loc.endsWith(city.trim()))) {
         passButton.click();
