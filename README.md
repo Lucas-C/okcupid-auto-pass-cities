@@ -23,3 +23,5 @@ autoPassCities();</code></pre>
 
 You can generate **your own [bookmarklet](https://en.wikipedia.org/wiki/Bookmarklet)**
 for the cities you wish to excludeon this page: <https://lucas-c.github.io/okcupid-auto-pass-cities/>
+
+Of course it should be easy to extend this filtering to other criteria: age, details...
