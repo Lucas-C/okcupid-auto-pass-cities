@@ -4,24 +4,24 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>OkCupid AutoPassCities bookmarklet</title>
-        <meta property="og:site_name" content="OkCupid AutoPassCities bookmarklet" >
-        <meta property="og:title" content="OkCupid AutoPassCities bookmarklet" >
-        <meta itemprop="name" content="OkCupid AutoPassCities bookmarklet" >
-        <meta name="description" content="Bookmarklet to auto-pass cities on OkCupid">
-        <meta property="og:description" content="Bookmarklet to auto-pass cities on OkCupid" >
-        <meta name="twitter:description" content="SuiviBookmarklet to auto-pass cities on OkCupid" >
-        <meta itemprop="description" content="Bookmarklet to auto-pass cities on OkCupid" >
+        <title>AutoPass OkCupid bookmarklet</title>
+        <meta property="og:site_name" content="AutoPass OkCupid bookmarklet" >
+        <meta property="og:title" content="AutoPass OkCupid bookmarklet" >
+        <meta itemprop="name" content="AutoPass OkCupid bookmarklet" >
+        <meta name="description" content="Bookmarklet to auto-pass matches on OkCupid">
+        <meta property="og:description" content="Bookmarklet to auto-pass matches on OkCupid" >
+        <meta name="twitter:description" content="SuiviBookmarklet to auto-pass matches on OkCupid" >
+        <meta itemprop="description" content="Bookmarklet to auto-pass matches on OkCupid" >
         <meta name="author" content="Lucas Cimon">
         <meta name="twitter:card" content="summary" >
         <meta property="og:type" content="website" >
-        <meta property="og:url" content="https://lucas-c.github.io/okcupid-auto-pass-cities/" >
-        <meta name="twitter:url" content="https://lucas-c.github.io/okcupid-auto-pass-cities/" >
-        <meta itemprop="url" content="https://lucas-c.github.io/okcupid-auto-pass-cities/">
-        <meta property="og:image" content="https://lucas-c.github.io/okcupid-auto-pass-cities/OkCupid-logo.jpg" >
+        <meta property="og:url" content="https://lucas-c.github.io/okcupid-auto-pass/" >
+        <meta name="twitter:url" content="https://lucas-c.github.io/okcupid-auto-pass/" >
+        <meta itemprop="url" content="https://lucas-c.github.io/okcupid-auto-pass/">
+        <meta property="og:image" content="https://lucas-c.github.io/okcupid-auto-pass/OkCupid-logo.jpg" >
         <meta property="og:image:type" content="image/jpeg" >
-        <meta name="twitter:image" content="https://lucas-c.github.io/okcupid-auto-pass-cities/OkCupid-logo.jpg" >
-        <meta itemprop="image" content="https://lucas-c.github.io/okcupid-auto-pass-cities/OkCupid-logo.jpg" >
+        <meta name="twitter:image" content="https://lucas-c.github.io/okcupid-auto-pass/OkCupid-logo.jpg" >
+        <meta itemprop="image" content="https://lucas-c.github.io/okcupid-auto-pass/OkCupid-logo.jpg" >
         <!-- Disallow Twitter from using your site’s info for personalization purposes: -->
         <meta name="twitter:dnt" content="on">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
@@ -33,63 +33,80 @@
         .container { max-width: 80rem; }
         .jumbotron p { font-size: 16px; }
         @media screen and (min-width: 768px) {
-          .jumbotron h1 { font-size: 32px; }
+          .jumbotron h1 { font-size: 36px; }
         }
         </style>
     </head>
     <body>
       <div class="container">
         <div class="jumbotron">
-          <h1>Bookmarklet to auto-pass cities on OkCupid</h1>
+          <h1>Bookmarklet to auto-pass matches on OkCupid</h1>
           <p class="lead"><a href="https://www.okcupid.com"><img class="logo" alt="OkCupid logo" src="OkCupid-logo.jpg"></img></a> is great!</p>
           <p>One things that annoys me a little though,
           is that I often get matches for <b>people too far away</b> from where I live,
           even with the <b>distance filter</b> set in my <em>Settings</em>:</p>
           <img class="screenshot" src="OkCupid-distance-filter.jpg">
-          <p>Hence I have made a <a href="https://en.wikipedia.org/wiki/Bookmarklet">bookmarklet</a> that <b>auto-pass matches for a list of given cities</b>.</p>
+          <p>Hence I have made a <a href="https://en.wikipedia.org/wiki/Bookmarklet">bookmarklet</a> that <b>auto-pass matches for a list of given cities</b>. Then I got requests to add more criteria.</p>
           <p>There are the steps to configure and use your own bookmarklet:</p>
           <ol>
-            <li>Enter a list of city names below, separated by commas.</li>
+            <li>Enter a list of criteria to <b>exclude</b>.</li>
             <li>Press the <em>Create bookmarklet</em> green button.</li>
             <li>A blue button should appear. Drag-and-drop it on your bookmark toolbar.</li>
-            <li>On the <a href="https://www.okcupid.com/discover">/discover</a> page at OkCupid.com, click on your new <em>OkCupid AutoPassCities</em> bookmarklet.</li>
+            <li>On the <a href="https://www.okcupid.com/discover">/discover</a> page at OkCupid.com, click on your new <em>OkCupid AutoPass</em> bookmarklet.</li>
           </ol>
-          <p>Now, whenever OkCupid suggests a match for you in one of those cities, the <em>Pass</em> button will automatically and immediately be pressed.</p>
+          <p>Now, whenever OkCupid suggests a match for you that correspond to one of those criteria, the <em>Pass</em> button will automatically and immediately be pressed.</p>
           <form>
             <div class="form-group">
-              <label for="cities">Cities:</label>
-              <input class="form-control" id="cities" placeholder="Paris,Bordeaux">
+              <label for="cities">Cities (separated by commas):</label>
+              <input class="form-control" id="cities" name="cities" placeholder="Paris,Bordeaux">
+            </div>
+            <div class="form-group">
+              <label for="summary">Words in the self-summary (separated by commas):</label>
+              <input class="form-control" id="summary" name="summary" placeholder="Christian values">
+            </div>
+            <div class="form-group">
+              <label for="details">Words in the details section (separated by commas):</label>
+              <input class="form-control" id="details" name="details" placeholder="Has kid">
             </div>
             <button type="submit" class="btn btn-lg btn-success">Create bookmarklet</button>
           </form>
           <br>
           <p>
             Bookmarklet generated:
-            <a role="button" class="btn btn-lg btn-info" id="bookmarklet" style="display: none">OkCupid AutoPassCities</a>
+            <a role="button" class="btn btn-lg btn-info" id="bookmarklet" style="display: none">OkCupid AutoPass</a>
           </p>
           <br>
           <p>If you visit another web page, the bookmarklet will stop running.
              You will need to re-enable it on your next visit on the <a href="https://www.okcupid.com/discover">/discover</a> page by clicking on it.</p>
         </div>
-        <footer>Source code is on <a href="https://github.com/Lucas-C/okcupid-auto-pass-cities/">GitHub</a></footer
+        <footer>Source code is on <a href="https://github.com/Lucas-C/okcupid-auto-pass/">GitHub</a></footer
       </div>
       <script>
         const form = document.forms[0];
-        const cities = document.getElementsByTagName('input')[0];
+        const citiesToExclude = document.getElementsByName('cities')[0];
+        const summaryToExclude = document.getElementsByName('summary')[0];
+        const detailsToExclude = document.getElementsByName('details')[0];
         const bookmarklet = document.getElementById('bookmarklet');
         form.addEventListener('submit', function(event) {
             event.preventDefault();
             event.stopPropagation();
             bookmarklet.style.display = '';
-            bookmarklet.href = `javascript:function autoPassCities() {
+            bookmarklet.href = `javascript:function autoPass() {
     const loc = document.getElementsByClassName('card-content-header__location')[0].textContent;
-    if ('${cities.value}'.split(',').some(city => loc.endsWith(city.trim()))) {
-        console.log('AutoPass:', loc);
-        document.getElementsByClassName('pass')[0].click();
+    const summary = document.getElementsByClassName('dt-essay-section')[0].textContent;
+    const details = document.getElementsByClassName('dt-section-content')[1].textContent;
+    const passButton = document.getElementsByClassName('pass')[0];
+    if ('${citiesToExclude.value}'.split(',').some(city => city.trim() && loc.endsWith(city.trim()))) {
+        passButton.click();
     }
-    setTimeout(autoPassCities, 500);
-} autoPassCities();`;
-            console.log(cities.value);
+    if ('${summaryToExclude.value}'.split(',').some(word => word.trim() && summary.includes(word.trim()))) {
+        passButton.click();
+    }
+    if ('${detailsToExclude.value}'.split(',').some(word => word.trim() && details.includes(word.trim()))) {
+        passButton.click();
+    }
+    setTimeout(autoPass, 500);
+} autoPass();`;
         });
       </script>
     </body>
